@@ -59,7 +59,7 @@ function EditCouponForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-10/12 mx-auto mt-10 space-y-4">
+    <form onSubmit={handleSubmit} className="w-10/12 mx-auto md:w-6/12 mt-10 space-y-4">
       <h2 className="text-xl font-bold">ویرایش کوپن</h2>
 
       <div className="space-y-1">
