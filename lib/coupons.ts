@@ -1,0 +1,86 @@
+import type { ApiCoupon } from "@/types/CouponTypes";
+
+export const coupons: ApiCoupon[] = [
+  {
+    _id: "1",
+    code: "WELCOME10",
+    type: "percent",
+    value: 10,
+    usage_limit: 100,
+    total_used: 35,
+  },
+  {
+    _id: "2",
+    code: "FREESHIP",
+    type: "fixed",
+    value: 30000,
+    usage_limit: null,
+    total_used: 142,
+  },
+  {
+    _id: "3",
+    code: "SUMMER25",
+    type: "percent",
+    value: 25,
+    usage_limit: 50,
+    total_used: 50,
+  },
+  {
+    _id: "4",
+    code: "VIP500",
+    type: "fixed",
+    value: 500000,
+    usage_limit: 10,
+    total_used: 3,
+  },
+  {
+    _id: "5",
+    code: "NEWYEAR2025",
+    type: "percent",
+    value: 15,
+    usage_limit: 500,
+    total_used: 82,
+  },
+  {
+    _id: "6",
+    code: "STUDENT20",
+    type: "percent",
+    value: 20,
+    usage_limit: null,
+    total_used: 312,
+  },
+  {
+    _id: "7",
+    code: "BLACKFRIDAY",
+    type: "percent",
+    value: 50,
+    usage_limit: 1000,
+    total_used: 940,
+
+  },
+  {
+    _id: "8",
+    code: "AUTUMN15",
+    type: "percent",
+    value: 15,
+    usage_limit: 150,
+    total_used: 89,
+
+  },
+  {
+    _id: "9",
+    code: "FLASH100",
+    type: "fixed",
+    value: 100000,
+    usage_limit: 20,
+    total_used: 12,
+  },
+  {
+    _id: "10",
+    code: "LOYALTY30",
+    type: "percent",
+    value: 30,
+    usage_limit: null,
+    total_used: 700,
+  },
+];
