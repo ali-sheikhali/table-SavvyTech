@@ -69,7 +69,7 @@ export default function CouponList({ coupons, onDelete }: CouponListProps) {
                           setSelectedCoupon(coupon);
                           setOpen(true);
                         }}
-                        className="hover:underline"
+                        className="hover:underline cursor-pointer"
                       >
                         حذف
                       </button>

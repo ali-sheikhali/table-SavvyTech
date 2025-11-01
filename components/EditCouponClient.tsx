@@ -4,25 +4,17 @@ import { useMemo, useState } from "react";
 import { useCoupons } from "@/hooks/useCoupons";
 import type { ApiCoupon, CouponType } from "@/types/CouponTypes";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function EditCouponClient({ id }: { id: string }) {
   const router = useRouter();
   const { byId, update } = useCoupons();
 
-  // نرمال‌سازی آیدی برای جلوگیری از ناسازگاری عدد/رشته
   const normalizedId = useMemo(() => String(id), [id]);
-
-  // کوپن موردنظر از استیت هوک (synchronous)
   const found = byId(normalizedId);
 
-  // اگر کوپنی پیدا نشد
   if (!found) {
-    return (
-      <div className="w-10/12 mx-auto mt-10">
-        کوپن یافت نشد
-        <div className="text-xs text-zinc-500 mt-2 ltr">Debug: id = {normalizedId}</div>
-      </div>
-    );
+    return <div className="w-10/12 mx-auto mt-10">کوپن یافت نشد</div>;
   }
 
   return (
@@ -44,12 +36,26 @@ function EditCouponForm({
   coupon: ApiCoupon;
   onSubmit: (data: ApiCoupon) => void;
 }) {
-  // state اولیه فقط یک‌بار از روی props ساخته می‌شود؛ نیازی به useEffect نیست
   const [form, setForm] = useState<ApiCoupon>(() => ({ ...coupon }));
+  const [error, setError] = useState<string | null>(null);
+
+  const handleValueChange = (value: number) => {
+    if (form.type === "percent" && (value < 0 || value > 100)) {
+      setError("برای نوع درصدی، مقدار باید بین ۰ تا ۱۰۰ باشد");
+    } else {
+      setError(null);
+      setForm((p) => ({ ...p, value }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.type === "percent" && (form.value < 0 || form.value > 100)) {
+      toast.error("برای نوع درصدی، مقدار باید بین ۰ تا ۱۰۰ باشد");
+      return;
+    }
     onSubmit(form);
+    toast.success("کوپن با موفقیت ذخیره شد");
   };
 
   return (
@@ -80,43 +86,21 @@ function EditCouponForm({
       </div>
 
       <div className="space-y-1">
-        <label className="block text-sm">مقدار</label>
+        <label className="block text-sm">
+          مقدار {form.type === "percent" ? "(بین ۰ تا ۱۰۰)" : ""}
+        </label>
         <input
           type="number"
-          className="border rounded px-3 py-2 w-full"
+          className={`border rounded px-3 py-2 w-full ${
+            error ? "border-red-500" : ""
+          }`}
           value={form.value}
-          onChange={(e) => setForm((p) => ({ ...p, value: Number(e.target.value) }))}
+          onChange={(e) => handleValueChange(Number(e.target.value))}
         />
+        {error && <p className="text-red-500 text-sm">{error}</p>}
       </div>
 
-      <div className="space-y-1">
-        <label className="block text-sm">سقف استفاده (اختیاری)</label>
-        <input
-          type="number"
-          className="border rounded px-3 py-2 w-full"
-          value={form.usage_limit ?? ""}
-          onChange={(e) =>
-            setForm((p) => ({
-              ...p,
-              usage_limit: e.target.value === "" ? null : Number(e.target.value),
-            }))
-          }
-        />
-      </div>
-
-      <div className="space-y-1">
-        <label className="block text-sm">تعداد استفاده‌شده</label>
-        <input
-          type="number"
-          className="border rounded px-3 py-2 w-full"
-          value={form.total_used}
-          onChange={(e) =>
-            setForm((p) => ({ ...p, total_used: Number(e.target.value) }))
-          }
-        />
-      </div>
-
-      <button type="submit" className="bg-primary text-white px-4 py-2 rounded">
+      <button type="submit" className="bg-primary text-white px-4 py-2 rounded cursor-pointer">
         ذخیره
       </button>
     </form>

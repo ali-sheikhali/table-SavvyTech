@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCoupons } from "@/hooks/useCoupons";
 import type { ApiCoupon, CouponType } from "@/types/CouponTypes";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function NewCouponClient() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function NewCouponClient() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     create(form);
+    toast.success("کوپن با موفقیت ثبت شد.")
     router.push("/");
   };
 

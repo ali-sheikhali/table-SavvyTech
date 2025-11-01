@@ -1,0 +1,61 @@
+/*
+IranYekanX fonts are considered a proprietary software. To gain information about the laws
+regarding the use of these fonts, please visit www.fontiran.com
+---------------------------------------------------------------------
+This set of fonts are used in this project under the license: (O2GSC4QF)
+--------------------------------------------------------------------- 
+*/
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-Thin.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-Thin.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-UltraLight.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-UltraLight.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-UltraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-Light.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-Light.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-Regular.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-Regular.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-Medium.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-Medium.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('/fonts/woff2/IRANYekanXFaNum-Bold.woff2') format('woff2'),
+       url('/fonts/woff/IRANYekanXFaNum-Bold.woff') format('woff'),
+       url('/fonts/ttf/IRANYekanXFaNum-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
